@@ -79,8 +79,12 @@ class ViewController: UIViewController {
         let name = nameTextField?.text
         let major = majorTextField?.text
         let gpa = gpaTextField?.text
-        let resultString = "\(name) is majoring in \(major) with a \(gpa)"
+        let resultString = "\(name!) is majoring in \(major!) with a \(gpa!)"
         studentList.text = studentList.text + "\n" + resultString
+        nameTextField.text = ""
+        majorTextField.text = ""
+        gpaTextField.text = ""
+        yearTextField.text = ""
     }
 
     override func didReceiveMemoryWarning() {
