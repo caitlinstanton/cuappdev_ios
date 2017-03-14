@@ -11,6 +11,7 @@
 		8CBE8FAD1E7766ED00F8A5EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBE8FAC1E7766ED00F8A5EA /* Assets.xcassets */; };
 		8CBE8FB01E7766ED00F8A5EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBE8FAE1E7766ED00F8A5EA /* LaunchScreen.storyboard */; };
 		8CBE8FB81E77673D00F8A5EA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE8FB71E77673D00F8A5EA /* FeedViewController.swift */; };
+		8CBE8FBA1E7770D800F8A5EA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE8FB91E7770D800F8A5EA /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		8CBE8FAF1E7766ED00F8A5EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CBE8FB11E7766ED00F8A5EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CBE8FB71E77673D00F8A5EA /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		8CBE8FB91E7770D800F8A5EA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				8CBE8FA51E7766ED00F8A5EA /* AppDelegate.swift */,
 				8CBE8FB71E77673D00F8A5EA /* FeedViewController.swift */,
 				8CBE8FAC1E7766ED00F8A5EA /* Assets.xcassets */,
+				8CBE8FB91E7770D800F8A5EA /* DetailViewController.swift */,
 				8CBE8FAE1E7766ED00F8A5EA /* LaunchScreen.storyboard */,
 				8CBE8FB11E7766ED00F8A5EA /* Info.plist */,
 			);
@@ -132,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBE8FBA1E7770D800F8A5EA /* DetailViewController.swift in Sources */,
 				8CBE8FB81E77673D00F8A5EA /* FeedViewController.swift in Sources */,
 				8CBE8FA61E7766ED00F8A5EA /* AppDelegate.swift in Sources */,
 			);

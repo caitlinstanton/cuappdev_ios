@@ -22,7 +22,7 @@ class Product {
     
 }
 
-class FeedViewController: UIViewController, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tableView: UITableView!
     var products: [Product] = [Product]()
@@ -32,11 +32,12 @@ class FeedViewController: UIViewController, UITableViewDataSource {
 
         view.backgroundColor = .white
         
+        createProducts()
+        
         tableView = UITableView(frame: view.frame)
         tableView.dataSource = self
+        tableView.delegate = self
         view.addSubview(tableView)
-        
-        // Do any additional setup after loading the view.
     }
 
     func createProducts() {
@@ -56,6 +57,14 @@ class FeedViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let product = products[indexPath.row]
+        let detailViewController = DetailViewController()
+        detailViewController.product = product
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 
 }
