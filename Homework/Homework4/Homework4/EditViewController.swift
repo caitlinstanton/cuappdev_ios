@@ -12,6 +12,9 @@ class EditViewController: UIViewController {
     
     var editText: UITextField!
     var submitButton: UIButton!
+    var updatedIndex: Int? = nil
+    var updatedInterest: String? = nil
+    var updatedBool: Int! = 0
     
     var interest: String!
     var friend: Friend!
@@ -31,18 +34,25 @@ class EditViewController: UIViewController {
         submitButton.backgroundColor = UIColor.blue
         submitButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         submitButton.setTitle("Submit", for: UIControlState.normal)
-        submitButton.addTarget(self, action: #selector(updateInterest), for: .touchUpInside)
+        //submitButton.addTarget(self, action: #selector(updateInterest), for: .touchUpInside)
         
         view.addSubview(editText)
         view.addSubview(submitButton)
+        
+        updatedBool = 0
+        updatedIndex = nil
+        updatedInterest = nil
     }
     
+    /*
     func updateInterest() {
-        var interestIndex: Int = friend.interests.index(of:interest)!
-        friend.interests[interestIndex] = editText.text!
-        print(friend.interests[interestIndex])
-        interest = editText.text
-        print("new interest is \(interest)")
+        updatedIndex = friend.interests.index(of:interest)
+        updatedInterest = editText.text
+        updatedBool = 1
+        let detailViewController = DetailViewController()
+        detailViewController.interests[updatedIndex!] = updatedInterest!
+        print("updated at \(updatedIndex) with \(updatedInterest)")
     }
+ */
     
 }

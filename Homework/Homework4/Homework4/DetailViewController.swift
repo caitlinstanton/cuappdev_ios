@@ -20,20 +20,25 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         view.backgroundColor = .white
         self.title = "\(friend.name)'s Interests"
         
-        createInterests()
-        
         tableView = UITableView(frame: view.frame)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        refresh()
+        
         view.addSubview(tableView)
     }
     
-    func createInterests() {
+    func refresh() {
         for i in friend.interests {
             interests.append(i)
         }
+        print("refresh")
         let editViewController = EditViewController()
-        //editViewController.updateInterest()
+        print("\(editViewController.updatedBool)")
+
+        self.tableView.reloadData()
+        //self.refresher.endRefreshing()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,5 +60,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         editViewController.friend = friend
         navigationController?.pushViewController(editViewController, animated: true)
     }
+
     
 }
