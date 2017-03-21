@@ -8,21 +8,29 @@
 
 import UIKit
 
+protocol FeedTableViewCellDelegate {
+    func feedTableViewCellDidTapHeartButton(feedTableViewCell: FeedTableViewCell)
+}
+
 class FeedTableViewCell: UITableViewCell {
 
     var profileImageView: UIImageView!
     var creatorLabel: UILabel!
     var songNameLabel: UILabel!
     var heartButton: UIButton!
+    var delegate: FeedTableViewCellDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .gray
+        
         profileImageView = UIImageView()
         creatorLabel = UILabel()
         songNameLabel = UILabel()
         heartButton = UIButton()
+        heartButton.addTarget(self, action: #selector(didTapHeartButton), for: .touchUpInside)
         
         addSubview(profileImageView)
         addSubview(creatorLabel)
@@ -35,9 +43,15 @@ class FeedTableViewCell: UITableViewCell {
         fatalError("init(coder) has not been implemented")
     }
     
+    func didTapHeartButton() {
+        
+    }
+    
     override func layoutSubviews() {
         profileImageView.frame = CGRect(x: 10, y: 0, width: 50, height: 50)
         profileImageView.center = CGPoint(x: profileImageView.center.x, y: frame.height/2.0)
+        profileImageView.layer.cornerRadius = profileImageView.frame.width/2.0
+        profileImageView.clipsToBounds = true
         
         creatorLabel.frame = CGRect(x: profileImageView.frame.origin.x + profileImageView.frame.width + 5, y: profileImageView.frame.origin.y, width: 200, height: profileImageView.frame.height/2.0)
         
@@ -51,7 +65,13 @@ class FeedTableViewCell: UITableViewCell {
         profileImageView.image = profileImage
         creatorLabel.text = creatorName
         songNameLabel.text = songName
-        //isLiked = isLiked
+        
+        if isLiked {
+            heartButton.setImage(#imageLiteral(resourceName: "heart_red"), for: .normal)
+        } else {
+            heartButton.setImage(#imageLiteral(resourceName: "heart_white"), for: .normal)
+        }
+        
     }
 
 }

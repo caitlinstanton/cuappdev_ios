@@ -24,7 +24,7 @@ class Post {
     
 }
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FeedTableViewCellDelegate {
 
     var tableView: UITableView!
     var posts: [Post] = []
@@ -65,5 +65,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func feedTableViewCellDidTapHeartButton(feedTableViewCell: FeedTableViewCell) {
+        print("here")
     }
 }
