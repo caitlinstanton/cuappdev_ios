@@ -20,13 +20,9 @@ class FeedTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         profileImageView = UIImageView()
-        profileImageView.backgroundColor = .black
         creatorLabel = UILabel()
-        creatorLabel.backgroundColor = .gray
         songNameLabel = UILabel()
-        songNameLabel.backgroundColor = .red
         heartButton = UIButton()
-        heartButton.backgroundColor = .blue
         
         addSubview(profileImageView)
         addSubview(creatorLabel)
@@ -49,6 +45,13 @@ class FeedTableViewCell: UITableViewCell {
         
         heartButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         heartButton.center = CGPoint(x: frame.width - 50, y: frame.height/2.0)
+    }
+    
+    func setupCellWithPost(profileImage: UIImage, creatorName: String, songName: String, isLiked: Bool) {
+        profileImageView.image = profileImage
+        creatorLabel.text = creatorName
+        songNameLabel.text = songName
+        //isLiked = isLiked
     }
 
 }

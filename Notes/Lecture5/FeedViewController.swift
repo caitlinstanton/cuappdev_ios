@@ -61,7 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //let cell = UITableViewCell(style: .default, reuseIdentifier: "")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Reuse") as? FeedTableViewCell {
             let post = posts[indexPath.row]
-            cell.textLabel?.text = post.creator
+            cell.setupCellWithPost(profileImage: post.image, creatorName: post.creator, songName: post.songName, isLiked: post.isLiked)
             return cell
         }
         return UITableViewCell()
