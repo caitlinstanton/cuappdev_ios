@@ -58,7 +58,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchPosts()
     }
     
-    func addNewContact() {
+    func addNewContact(phone: String) {
         let newContact = Contact(firstName: "", lastName: "", image: nil, phone: "", email: "")
         contacts.append(newContact)
         let editViewController = EditViewController()
@@ -66,7 +66,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         editViewController.tableView = tableView
         navigationController?.pushViewController(editViewController, animated: true)
     }
-    
+
     func fetchPosts() {
         
         let steph = Contact(firstName: "Steph", lastName: "Mark", image: #imageLiteral(resourceName: "steph"), phone: "111-111-1111", email: "steph@marky.com")
@@ -88,7 +88,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: .default, reuseIdentifier: "")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Reuse") as? FeedTableViewCell {
             let contact = contacts[indexPath.row]
             cell.setupCellWithPost(profileImage: contact.image!, firstName: contact.firstName, lastName: contact.lastName, phoneNumber: contact.phone, emailAddress: contact.email)
@@ -107,7 +106,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
 
 }

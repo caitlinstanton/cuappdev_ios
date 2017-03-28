@@ -22,6 +22,7 @@ class FeedTableViewCell: UITableViewCell {
     var delegate: FeedTableViewCellDelegate?
     var phoneImage: UIImageView!
     var emailImage: UIImageView!
+    var feed = FeedViewController()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
