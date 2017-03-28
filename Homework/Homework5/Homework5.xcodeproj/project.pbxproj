@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C6F61B51E8A06EE00AB93B4 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6F61B41E8A06EE00AB93B4 /* EditViewController.swift */; };
 		8C7593FD1E862767006EC7D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7593FC1E862767006EC7D0 /* AppDelegate.swift */; };
 		8C7594041E862767006EC7D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C7594031E862767006EC7D0 /* Assets.xcassets */; };
 		8C7594071E862767006EC7D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7594051E862767006EC7D0 /* LaunchScreen.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C6F61B41E8A06EE00AB93B4 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8C7593F91E862767006EC7D0 /* Homework5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C7593FC1E862767006EC7D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C7594031E862767006EC7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				8C7593FC1E862767006EC7D0 /* AppDelegate.swift */,
+				8C6F61B41E8A06EE00AB93B4 /* EditViewController.swift */,
 				8C75940E1E862828006EC7D0 /* FeedViewController.swift */,
 				8C7594101E862857006EC7D0 /* FeedTableViewCell.swift */,
 				8C7594031E862767006EC7D0 /* Assets.xcassets */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C6F61B51E8A06EE00AB93B4 /* EditViewController.swift in Sources */,
 				8C75940F1E862828006EC7D0 /* FeedViewController.swift in Sources */,
 				8C7594111E862857006EC7D0 /* FeedTableViewCell.swift in Sources */,
 				8C7593FD1E862767006EC7D0 /* AppDelegate.swift in Sources */,
@@ -289,6 +293,7 @@
 				8C75940D1E862767006EC7D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

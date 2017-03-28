@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FeedTableViewCellDelegate {
-    func feedTableViewCellDidTapHeartButton(feedTableViewCell: FeedTableViewCell)
+    
 }
 
 class FeedTableViewCell: UITableViewCell {
@@ -20,6 +20,8 @@ class FeedTableViewCell: UITableViewCell {
     var phoneNumberLabel: UILabel!
     var emailLabel: UILabel!
     var delegate: FeedTableViewCellDelegate?
+    var phoneImage: UIImageView!
+    var emailImage: UIImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
@@ -33,11 +35,19 @@ class FeedTableViewCell: UITableViewCell {
         phoneNumberLabel = UILabel()
         emailLabel = UILabel()
         
+        phoneImage = UIImageView()
+        phoneImage.image = #imageLiteral(resourceName: "Phone-50")
+        
+        emailImage = UIImageView()
+        emailImage.image = #imageLiteral(resourceName: "Message-50")
+        
         addSubview(profileImageView)
         addSubview(firstNameLabel)
         addSubview(lastNameLabel)
         addSubview(phoneNumberLabel)
         addSubview(emailLabel)
+        addSubview(emailImage)
+        addSubview(phoneImage)
         
     }
     
@@ -46,23 +56,40 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        profileImageView.frame = CGRect(x: 10, y: 0, width: 50, height: 50)
+        profileImageView.frame = CGRect(x: 10, y: 0, width: 75, height: 75)
         profileImageView.center = CGPoint(x: profileImageView.center.x, y: frame.height/2.0)
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2.0
         profileImageView.clipsToBounds = true
-
-        firstNameLabel.frame = CGRect(x: profileImageView.frame.origin.x + profileImageView.frame.width + 15, y: profileImageView.frame.origin.y, width: 200, height: profileImageView.frame.height/2.0)
+        
+        firstNameLabel.frame = CGRect(x: profileImageView.frame.origin.x + profileImageView.frame.width + 15, y: profileImageView.frame.origin.y, width: 0, height: profileImageView.frame.height/2.0)
+        firstNameLabel.sizeToFit()
         firstNameLabel.textColor = UIColor.black
         
-        lastNameLabel.frame = CGRect(x: firstNameLabel.frame.width + 5, y: profileImageView.frame.origin.y, width: 200, height: profileImageView.frame.height/2.0)
+        lastNameLabel.frame = CGRect(x: firstNameLabel.frame.origin.x + firstNameLabel.frame.width + 3, y: profileImageView.frame.origin.y, width: 0, height: profileImageView.frame.height/2.0)
+        lastNameLabel.sizeToFit()
         lastNameLabel.textColor = UIColor.black
+        
+        phoneImage.frame = CGRect(x: profileImageView.frame.origin.x + profileImageView.frame.width + 15, y: firstNameLabel.frame.origin.y + firstNameLabel.frame.height + 4, width: profileImageView.frame.height/4.0, height: profileImageView.frame.height/4.0)
+        
+        phoneNumberLabel.frame = CGRect(x: phoneImage.frame.origin.x + phoneImage.frame.width + 3, y: firstNameLabel.frame.origin.y + firstNameLabel.frame.height + 4, width: 0, height: profileImageView.frame.height/4.0)
+        phoneNumberLabel.sizeToFit()
+        phoneNumberLabel.textColor = UIColor.darkGray
+        
+        emailImage.frame = CGRect(x: profileImageView.frame.origin.x + profileImageView.frame.width + 15, y: phoneNumberLabel.frame.origin.y + phoneNumberLabel.frame.height + 4, width: profileImageView.frame.height/4.0, height: profileImageView.frame.height/4.0)
+        
+        emailLabel.frame = CGRect(x: emailImage.frame.origin.x + emailImage.frame.width + 3, y: phoneNumberLabel.frame.origin.y + phoneNumberLabel.frame.height + 4, width: 0, height: profileImageView.frame.height/4.0)
+        emailLabel.sizeToFit()
+        emailLabel.textColor = UIColor.darkGray
+
         
     }
     
-    func setupCellWithPost(profileImage: UIImage, firstName: String, lastName: String) {
+    func setupCellWithPost(profileImage: UIImage, firstName: String, lastName: String, phoneNumber: String, emailAddress: String) {
         profileImageView.image = profileImage
         firstNameLabel.text = firstName
         lastNameLabel.text = lastName
+        phoneNumberLabel.text = phoneNumber
+        emailLabel.text = emailAddress
     }
     
 }

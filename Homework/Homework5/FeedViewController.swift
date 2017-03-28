@@ -12,14 +12,18 @@ class Contact {
     
     var firstName: String
     var lastName: String
-    var image: UIImage
+    var image: UIImage?
     var phone: String
     var email: String
     
-    init(firstName: String, lastName: String, image: UIImage, phone: String, email: String) {
+    init(firstName: String, lastName: String, image: UIImage?, phone: String, email: String) {
         self.firstName = firstName
         self.lastName = lastName
-        self.image = image
+        if image != nil {
+            self.image = image
+        } else {
+            self.image = #imageLiteral(resourceName: "User Groups-50")
+        }
         self.phone = phone
         self.email = email
     }
@@ -29,19 +33,38 @@ class Contact {
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FeedTableViewCellDelegate {
     
     var tableView: UITableView!
+    var addContact: UIButton!
     var contacts: [Contact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Contacts"
-        tableView = UITableView(frame: view.frame)
+        
+        addContact = UIButton(frame: CGRect(x: view.frame.origin.x, y: self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.height, width: view.frame.width, height: 60))
+        addContact.setTitle("Add Contact", for: UIControlState.normal)
+        addContact.backgroundColor = UIColor.blue
+        addContact.setTitleColor(UIColor.white, for: UIControlState.normal)
+        addContact.addTarget(self, action: #selector(addNewContact), for: .touchUpInside)
+        
+        tableView = UITableView(frame: CGRect(x: 0, y: addContact.frame.origin.y + addContact.frame.height, width: view.frame.width, height: view.frame.height - (addContact.frame.origin.y + addContact.frame.height)))
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "Reuse")
         tableView.rowHeight = 100
         tableView.dataSource = self
         tableView.delegate = self
+        
+        view.addSubview(addContact)
         view.addSubview(tableView)
         
         fetchPosts()
+    }
+    
+    func addNewContact() {
+        let newContact = Contact(firstName: "", lastName: "", image: nil, phone: "", email: "")
+        contacts.append(newContact)
+        let editViewController = EditViewController()
+        editViewController.contact = newContact
+        editViewController.tableView = tableView
+        navigationController?.pushViewController(editViewController, animated: true)
     }
     
     func fetchPosts() {
@@ -68,13 +91,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //let cell = UITableViewCell(style: .default, reuseIdentifier: "")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Reuse") as? FeedTableViewCell {
             let contact = contacts[indexPath.row]
-            cell.setupCellWithPost(profileImage: contact.image, firstName: contact.firstName, lastName: contact.lastName)
+            cell.setupCellWithPost(profileImage: contact.image!, firstName: contact.firstName, lastName: contact.lastName, phoneNumber: contact.phone, emailAddress: contact.email)
             return cell
         }
         return UITableViewCell()
     }
     
-    func feedTableViewCellDidTapHeartButton(feedTableViewCell: FeedTableViewCell) {
-        print("here")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let editViewController = EditViewController()
+        editViewController.contact = contacts[indexPath.row]
+        editViewController.tableView = tableView
+        navigationController?.pushViewController(editViewController, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
 }
