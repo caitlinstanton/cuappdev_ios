@@ -27,6 +27,10 @@ class LibraryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let cameraBarButton = UIBarButtonItem(title: "Camera", style: .plain, target: self, action: #selector(cameraButtonPressed))
         navigationItem.rightBarButtonItem = cameraBarButton
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
     
     func cameraButtonPressed() {
@@ -39,6 +43,13 @@ class LibraryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func pullToRefresh() {
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer: Timer) in
+            collectionView.reloadData()
+            collectionView.refreshControl?.endRefreshing()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
