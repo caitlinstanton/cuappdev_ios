@@ -47,8 +47,8 @@ class LibraryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func pullToRefresh() {
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer: Timer) in
-            collectionView.reloadData()
-            collectionView.refreshControl?.endRefreshing()
+            self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     
